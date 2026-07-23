@@ -1,0 +1,110 @@
+html { scroll-behavior: smooth; }
+body { background: #14110F; }
+
+::selection { background: #C89B3C; color: #14110F; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #14110F; }
+::-webkit-scrollbar-thumb { background: #33291f; border-radius: 0; }
+
+/* focus visibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid #C89B3C;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------- Signature element: barber-pole scroll spine -------- */
+.pole-track {
+  position: fixed;
+  top: 0; left: 0;
+  width: 7px;
+  height: 100vh;
+  z-index: 60;
+  background: #211C18;
+  overflow: hidden;
+}
+.pole-fill {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top;
+  background: repeating-linear-gradient(
+    -45deg,
+    #C89B3C 0px, #C89B3C 10px,
+    #8B3A2A 10px, #8B3A2A 20px,
+    #EDE6D8 20px, #EDE6D8 30px
+  );
+  background-size: 200% 200%;
+  animation: pole-spin 1.1s linear infinite;
+}
+@keyframes pole-spin {
+  from { background-position: 0 0; }
+  to   { background-position: 0 42px; }
+}
+
+/* Marquee (services ticker) */
+.ticker-track { display: flex; width: max-content; }
+
+/* Gallery marquee */
+.gallery-track { display: flex; width: max-content; }
+.gallery-track img { object-fit: cover; }
+
+.hairline { background: linear-gradient(90deg, transparent, #33291f 15%, #33291f 85%, transparent); height: 1px; }
+
+.brass-text { color: #C89B3C; }
+
+.btn-brass {
+  background: #C89B3C;
+  color: #14110F;
+  transition: background .25s ease, transform .25s ease;
+}
+.btn-brass:hover { background: #E4C476; transform: translateY(-2px); }
+
+.btn-outline {
+  border: 1px solid #C89B3C;
+  color: #EDE6D8;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.btn-outline:hover { background: #C89B3C; color: #14110F; transform: translateY(-2px); }
+
+.service-card {
+  background: #211C18;
+  border: 1px solid #33291f;
+  transition: border-color .3s ease, transform .3s ease;
+}
+.service-card:hover { border-color: #C89B3C; transform: translateY(-4px); }
+
+.reveal { opacity: 0; }
+
+.star { color: #C89B3C; }
+
+input, textarea {
+  background: #1C1815;
+  border: 1px solid #33291f;
+  color: #EDE6D8;
+}
+input::placeholder, textarea::placeholder { color: #6b625a; }
+input:focus, textarea:focus { border-color: #C89B3C; }
+
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0%; height: 1px;
+  background: #C89B3C;
+  transition: width .3s ease;
+}
+.nav-link:hover::after { width: 100%; }
